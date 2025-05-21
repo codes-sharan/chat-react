@@ -12,4 +12,5 @@ export interface User {
   name: string;
   email: string;
   online?: boolean;
+  avatar?: string;
 }

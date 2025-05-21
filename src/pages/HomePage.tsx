@@ -1,4 +1,4 @@
-import { CTA } from "@/components/CTA";
+// import { CTA } from "@/components/CTA";
 import { Features } from "@/components/Features";
 import Hero from "@/components/Hero";
 
@@ -7,7 +7,7 @@ const HomePage = () => {
     <div>
       <Hero />
       <Features />
-      <CTA />
+      {/* <CTA /> */}
     </div>
   );
 };

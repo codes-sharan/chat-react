@@ -59,7 +59,7 @@ export const Navbar = () => {
                     className="flex items-center gap-2 hover:bg-accent/50"
                   >
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src={user.avatar} />
+                      <AvatarImage src={user?.avatar} />
                       <AvatarFallback>
                         {user.name?.[0]?.toUpperCase() || "U"}
                       </AvatarFallback>
