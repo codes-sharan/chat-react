@@ -6,6 +6,7 @@ import { useSocket } from "@/context/socket-context";
 import { Message, User } from "@/types/chat";
 import { fetchMessages, fetchUsers } from "@/lib/api";
 import { useAuth } from "@/context/auth-context";
+import { LoadingScreen } from "./LoadingScreen";
 
 export default function ChatInterface() {
   const { socket } = useSocket();
@@ -28,6 +29,10 @@ export default function ChatInterface() {
       message: newMessage,
       tempId: Date.now().toString(),
     };
+
+    if (!user) {
+      return <LoadingScreen message="Authenticating..." />;
+    }
 
     // Optimistic update
     setMessages((prev) => [
@@ -52,7 +57,7 @@ export default function ChatInterface() {
       try {
         const data = await fetchUsers();
         setUsers(data.users);
-      } catch (err) {
+      } catch {
         setError("Failed to load users");
       } finally {
         setLoading(false);
@@ -111,6 +116,10 @@ export default function ChatInterface() {
         {error}
       </div>
     );
+  }
+
+  if (!user) {
+    return <LoadingScreen message="Authenticating user..." />;
   }
 
   return (
