@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -50,7 +50,10 @@ export const Navbar = () => {
 
         {/* Right Side - Navigation */}
         <div className="flex items-center gap-4">
-          {user ? (
+          {loading ? (
+            <span>Loading...</span>
+          ) : user ? (
+            // {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <div>
