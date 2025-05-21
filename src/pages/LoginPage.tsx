@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { LogIn, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAuth } from "@/context/auth-context";
 
 const LoginPage: React.FC = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,6 +28,7 @@ const LoginPage: React.FC = () => {
       });
 
       const { token } = await res.json();
+      await login(token);
       localStorage.setItem("token", token);
 
       navigate("/");

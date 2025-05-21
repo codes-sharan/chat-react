@@ -10,7 +10,7 @@ export function Features() {
   const features = [
     {
       icon: ShieldCheck,
-      title: "Military-Grade Security",
+      title: "High Security",
       description:
         "End-to-end encryption ensures your conversations stay private and secure.",
       className: "hover:border-blue-500/50",
