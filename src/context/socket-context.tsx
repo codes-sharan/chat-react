@@ -1,5 +1,6 @@
 // context/socket-context.tsx
 "use client";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
@@ -19,7 +20,7 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    const newSocket = io("http://localhost:9005", {
+    const newSocket = io(API_BASE_URL, {
       auth: {
         token: localStorage.getItem("token"),
       },

@@ -1,5 +1,6 @@
 // context/auth-context.tsx
 "use client";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 import { User } from "@/types/chat";
 import {
@@ -33,7 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const token = localStorage.getItem("token");
       console.log("Token on load:", token);
       try {
-        const response = await fetch("http://localhost:9005/api/auth/me", {
+        const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
